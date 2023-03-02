@@ -10,6 +10,7 @@ packages = [{include = "tech_blog"}]
 python = "^3.11"
 django = "^4.1.7"
 pre-commit = "^3.1.1"
+django-jazzmin = "^2.6.0"
 
 
 [build-system]
