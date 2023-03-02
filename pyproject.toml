@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "tech-blog"
+version = "0.1.0"
+description = ""
+authors = ["Abraao Andrade <abraao@nre.tec.br>"]
+readme = "README.md"
+packages = [{include = "tech_blog"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.1.7"
+pre-commit = "^3.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
