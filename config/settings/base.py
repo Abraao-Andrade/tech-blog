@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "drf_yasg",
     "django_hosts",
 ]
 
@@ -57,10 +58,10 @@ MIDDLEWARE = [
 ]
 
 # ROUTES
-ROOT_URLCONF = "routes.admin"
+ROOT_URLCONF = "routes.api"
 ROOT_URLADMIN = "routes.admin"
 ROOT_HOSTCONF = "routes.hosts"
-DEFAULT_HOST = "dash"
+DEFAULT_HOST = "api"
 
 TEMPLATES = [
     {
