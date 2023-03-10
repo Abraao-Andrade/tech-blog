@@ -133,6 +133,8 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+MASTER_PASSWORD_PASS = config("MASTER_PASSWORD_PASS", default=SECRET_KEY)
+
 # Django JAZZMIN
 # https://github.com/farridav/django-jazzmin
 from config.jazzadmin import *  # noqa
