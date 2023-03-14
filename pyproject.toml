@@ -18,6 +18,9 @@ django-hosts = "^5.2"
 drf-yasg = "^1.21.5"
 django-extensions = "^3.2.1"
 django-cors-headers = "^3.14.0"
+django-model-utils = "^4.3.1"
+django-ipware = "^5.0.0"
+pyjwt = "^2.6.0"
 
 
 [build-system]
