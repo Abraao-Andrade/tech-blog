@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app.accounts.views import SendPasswordView
 
 urlpatterns = [
+    path(
+        "generation-new-password", SendPasswordView.as_view(), name="send_new_password"
+    ),
     path("", admin.site.urls),
 ]

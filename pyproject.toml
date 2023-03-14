@@ -23,6 +23,10 @@ django-ipware = "^5.0.0"
 pyjwt = "^2.6.0"
 djangorestframework = "^3.14.0"
 djangorestframework-simplejwt = "^5.2.2"
+redis = "^4.5.1"
+celery = "^5.2.7"
+pillow = "^9.4.0"
+django-filter = "^22.1"
 
 
 [build-system]

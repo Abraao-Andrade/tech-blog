@@ -31,6 +31,10 @@ DEBUG = config("DJANGO_DEBUG", default=False)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="", cast=Csv())
 
+AUTH_USER_MODEL = "accounts.User"
+
+AUTHENTICATION_BACKENDS = ("app.common.backends.CaseInsensitiveModelBackend",)
+
 
 # Application definition
 
@@ -47,6 +51,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
+    "app.accounts.apps.AccountsConfig",
 ]
 
 MIDDLEWARE = [
@@ -113,9 +118,7 @@ TOKEN_RESET_EXPIRED = 1
 REST_FRAMEWORK = {
     "DATETIME_FORMAT": "%Y-%m-%dT%H:%M:%S.%fZ",
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
-    "DEFAULT_PERMISSION_CLASSES": (
-        "common.permissions.IsAuthenticatedOwnerPermission",
-    ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -176,3 +179,19 @@ MASTER_PASSWORD_PASS = config("MASTER_PASSWORD_PASS", default=SECRET_KEY)
 # Django JAZZMIN
 # https://github.com/farridav/django-jazzmin
 from config.jazzadmin import *  # noqa
+
+# Celery
+CELERY_BROKER_URL = config("CELERY_BROKER_URL", default="redis://localhost:6379")
+CELERY_DEFAULT_QUEUE = config("CELERY_DEFAULT_QUEUE", default="blog-backend")
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_ACKS_LATE = True
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_RESULT_BACKEND = None
+
+# ACTIVE CAMPAIGN
+
+ACTIVE_CAMPAIGN_API_KEY = config("ACTIVE_CAMPAIGN_API_KEY", default="")
+HOST_ACTIVE_CAMPAIGN = config("HOST_ACTIVE_CAMPAIGN", default="")
+DOMAIN = config("DOMAIN", default="blog.teste.com.br")
