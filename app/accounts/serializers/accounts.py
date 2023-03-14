@@ -108,7 +108,6 @@ class SignInSerializer(serializers.Serializer):
 class UserInfoSerializer(serializers.ModelSerializer):
     name = serializers.CharField(required=True)
     agreed = serializers.BooleanField(read_only=True)
-    profile = serializers.SerializerMethodField()
 
     class Meta:
         model = Customer
