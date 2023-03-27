@@ -40,6 +40,7 @@ AUTHENTICATION_BACKENDS = ("app.common.backends.CaseInsensitiveModelBackend",)
 
 INSTALLED_APPS = [
     "jazzmin",
+    "ckeditor",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -195,3 +196,162 @@ CELERY_RESULT_BACKEND = None
 ACTIVE_CAMPAIGN_API_KEY = config("ACTIVE_CAMPAIGN_API_KEY", default="")
 HOST_ACTIVE_CAMPAIGN = config("HOST_ACTIVE_CAMPAIGN", default="")
 DOMAIN = config("DOMAIN", default="blog.teste.com.br")
+
+# Ckeditor
+CKEDITOR_CONFIGS = {
+    "popups": {
+        "skin": "moono",
+        # 'skin': 'office2013',
+        "toolbar_Basic": [["Source", "-", "Bold", "Italic"]],
+        "toolbar_YourCustomToolbarConfig": [
+            {
+                "name": "document",
+                "items": [
+                    "Source",
+                    "-",
+                    "Save",
+                    "NewPage",
+                    "Preview",
+                    "Print",
+                    "-",
+                    "Templates",
+                ],
+            },
+            {
+                "name": "clipboard",
+                "items": [
+                    "Cut",
+                    "Copy",
+                    "Paste",
+                    "PasteText",
+                    "PasteFromWord",
+                    "-",
+                    "Undo",
+                    "Redo",
+                ],
+            },
+            {"name": "editing", "items": ["Find", "Replace", "-", "SelectAll"]},
+            {
+                "name": "forms",
+                "items": [
+                    "Form",
+                    "Checkbox",
+                    "Radio",
+                    "TextField",
+                    "Textarea",
+                    "Select",
+                    "Button",
+                    "ImageButton",
+                    "HiddenField",
+                ],
+            },
+            "/",
+            {
+                "name": "basicstyles",
+                "items": [
+                    "Bold",
+                    "Italic",
+                    "Underline",
+                    "Strike",
+                    "Subscript",
+                    "Superscript",
+                    "-",
+                    "RemoveFormat",
+                ],
+            },
+            {
+                "name": "paragraph",
+                "items": [
+                    "NumberedList",
+                    "BulletedList",
+                    "-",
+                    "Outdent",
+                    "Indent",
+                    "-",
+                    "Blockquote",
+                    "CreateDiv",
+                    "-",
+                    "JustifyLeft",
+                    "JustifyCenter",
+                    "JustifyRight",
+                    "JustifyBlock",
+                    "-",
+                    "BidiLtr",
+                    "BidiRtl",
+                    "Language",
+                ],
+            },
+            {"name": "links", "items": ["Link", "Unlink", "Anchor"]},
+            {
+                "name": "insert",
+                "items": [
+                    "Image",
+                    "Flash",
+                    "Table",
+                    "HorizontalRule",
+                    "Smiley",
+                    "SpecialChar",
+                    "PageBreak",
+                    "Iframe",
+                ],
+            },
+            "/",
+            {"name": "styles", "items": ["Styles", "Format", "Font", "FontSize"]},
+            {"name": "colors", "items": ["TextColor", "BGColor"]},
+            {"name": "tools", "items": ["Maximize", "ShowBlocks"]},
+            {"name": "about", "items": ["About"]},
+            "/",  # put this to force next toolbar on new line
+            {
+                "name": "yourcustomtools",
+                "items": [
+                    # put the name of your editor.ui.addButton here
+                    "Preview",
+                    "Maximize",
+                ],
+            },
+        ],
+        "toolbar": "YourCustomToolbarConfig",  # put selected toolbar config here
+        "tabSpaces": 4,
+        "extraPlugins": ",".join(
+            [
+                "uploadimage",  # the upload image feature
+                # your extra plugins here
+                "div",
+                "autolink",
+                "autoembed",
+                "embedsemantic",
+                "autogrow",
+                # 'devtools',
+                "widget",
+                "lineutils",
+                "clipboard",
+                "dialog",
+                "dialogui",
+                "elementspath",
+            ]
+        ),
+    },
+    "small": {
+        "removePlugins": "stylesheetparser",
+        "toolbar": "Custom",
+        "height": 200,
+        "toolbar_Custom": [
+            [
+                "Format",
+                "Bold",
+                "Italic",
+                "Underline",
+                "Strike",
+                "NumberedList",
+                "BulletedList",
+                "SpellChecker",
+                "Undo",
+                "Redo",
+                "Blockquote",
+            ],
+            ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"],
+            ["RemoveFormat", "PasteText", "Source", "Preview", "Maximize", "Find"],
+        ],
+        "extraPlugins": "",
+    },
+}
