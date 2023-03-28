@@ -37,7 +37,7 @@ class Category(TimeStampModel, SoftDeletionModel):
 
 class Author(TimeStampModel, SoftDeletionModel):
     name = models.CharField(max_length=400, verbose_name=_("Nome"))
-    photo = ImageField(upload_to="authors-profile")
+    photo = ImageField(upload_to="authors-profile", verbose_name=_("Foto"))
     profession = models.CharField(
         max_length=255, verbose_name=_("Profissão"), blank=True, null=True
     )
@@ -74,7 +74,17 @@ class Article(TimeStampModel, SoftDeletionModel):
     text = RichTextField(
         verbose_name=_("Texto do Artigo"), config_name="small", blank=True, null=True
     )
-    banner = ImageField(upload_to="articles-images")
+    banner = ImageField(
+        upload_to="articles-images",
+        help_text=_("Esta imagem será exibida como capa do artigo e banner"),
+    )
+    cover = ImageField(
+        upload_to="articles-images",
+        verbose_name=_("Imagem"),
+        help_text=_("Esta imagem será exibida dentro do artigo."),
+        blank=True,
+        null=True,
+    )
     read_time = models.TimeField(
         verbose_name=_("Templo de Leitura"), blank=True, null=True
     )
@@ -89,10 +99,16 @@ class Article(TimeStampModel, SoftDeletionModel):
     published_at = models.DateTimeField(
         verbose_name=_("Publicar em"), blank=False, null=True
     )
+    read_count = models.PositiveIntegerField(
+        verbose_name=_("Visualizações"), default=0, editable=False
+    )
     is_active = models.BooleanField(
         verbose_name=_("Ativo?"),
         help_text=_("Indica se o artigo está ativo"),
         default=True,
+    )
+    show_in_start = models.BooleanField(
+        verbose_name=_("Exibir no inicio?"), default=False
     )
 
     objects = ArticlesManager()
