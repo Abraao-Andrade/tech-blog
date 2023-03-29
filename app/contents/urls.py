@@ -8,6 +8,7 @@ from .views import (
     ArticlesMostReadListAPIView,
     VideoListAPIView,
     VideoRetrieveAPIView,
+    BannersListAPIView,
 )
 
 app_name = "contents"
@@ -47,5 +48,10 @@ urlpatterns = [
         r"^(?P<version>(v1))/videos/(?P<slug>[-\w]+)/video$",
         VideoRetrieveAPIView.as_view(),
         name="video-retrieve",
+    ),
+    re_path(
+        r"^(?P<version>(v1))/banners$",
+        BannersListAPIView.as_view(),
+        name="banners-list",
     ),
 ]

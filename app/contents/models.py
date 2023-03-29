@@ -37,7 +37,9 @@ class Category(TimeStampModel, SoftDeletionModel):
 
 class Author(TimeStampModel, SoftDeletionModel):
     name = models.CharField(max_length=400, verbose_name=_("Nome"))
-    photo = ImageField(upload_to="authors-profile", verbose_name=_("Foto"))
+    photo = ImageField(
+        upload_to="authors-profile", verbose_name=_("Foto"), blank=True, null=True
+    )
     profession = models.CharField(
         max_length=255, verbose_name=_("Profissão"), blank=True, null=True
     )
@@ -77,6 +79,8 @@ class Article(TimeStampModel, SoftDeletionModel):
     banner = ImageField(
         upload_to="articles-images",
         help_text=_("Esta imagem será exibida como capa do artigo e banner"),
+        blank=True,
+        null=True,
     )
     cover = ImageField(
         upload_to="articles-images",

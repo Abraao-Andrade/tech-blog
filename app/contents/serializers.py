@@ -41,3 +41,12 @@ class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
         fields = ["url", "title", "description", "slug", "published_at", "is_active"]
+
+
+class ArticleBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = [
+            "slug",
+            "banner",
+        ]

@@ -7,6 +7,7 @@ from rest_framework import status
 from .serializers import (
     CategorySerializer,
     ArticleSerializer,
+    ArticleBannerSerializer,
     VideoSerializer,
 )
 
@@ -113,3 +114,12 @@ class VideoRetrieveAPIView(generics.RetrieveAPIView):
                 VideoSerializer(video, many=False, context={"request": request}).data
             )
         return Response("video not found", status=status.HTTP_200_OK)
+
+
+class BannersListAPIView(generics.ListAPIView):
+    serializer_class = ArticleBannerSerializer
+    queryset = Article.objects.banners()
+    permission_classes = (AllowAny,)
+
+    def get_queryset(self):
+        return Article.objects.banners()

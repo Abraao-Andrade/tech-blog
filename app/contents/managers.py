@@ -30,6 +30,9 @@ class ArticlesManager(models.Manager):
     def most_read(self):
         return self.actives().filter(read_count__gt=0).order_by("-read_count")
 
+    def banners(self):
+        return self.actives().filter(show_in_start=True).exclude(banner__exact="")
+
 
 class VideoManager(models.Manager):
     def actives(self):
