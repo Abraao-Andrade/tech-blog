@@ -130,6 +130,9 @@ class Video(TimeStampModel):
     title = models.CharField(
         max_length=400, verbose_name=_("Título"), blank=True, null=True
     )
+    slug = AutoSlugField(
+        verbose_name=_("Slug"), populate_from="title", unique=True, max_length=200
+    )
     description = models.TextField(verbose_name=_("Descrição"), blank=True, null=True)
     published_at = models.DateTimeField(
         verbose_name=_("Publicar em"), blank=False, null=True

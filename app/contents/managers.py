@@ -27,6 +27,9 @@ class ArticlesManager(models.Manager):
             published_at__lte=timezone.now(), is_active=True
         )
 
+    def most_read(self):
+        return self.actives().filter(read_count__gt=0).order_by("-read_count")
+
 
 class VideoManager(models.Manager):
     def actives(self):

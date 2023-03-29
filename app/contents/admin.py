@@ -27,6 +27,9 @@ class ArticlesAdmin(admin.ModelAdmin):
     list_filter = ["is_active", "author", "categories"]
     search_fields = ["title", "author"]
     form = ArticleAdminForm
+    readonly_fields = [
+        "read_count",
+    ]
     fieldsets = [
         (
             None,
@@ -58,6 +61,7 @@ class ArticlesAdmin(admin.ModelAdmin):
                     "published_at",
                     "read_time",
                     "is_active",
+                    "show_in_start",
                 ],
             },
         ),

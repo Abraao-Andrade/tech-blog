@@ -8,11 +8,11 @@ from django.conf.urls.static import static
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="TechBlog API",
+        title="Blog ThiagoDomingos API",
         default_version="v1",
-        description="TechBlog@",
+        description="ThiagoDomingos@",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="contact@techblog.local"),
+        contact=openapi.Contact(email="contact@thiagodomingos.local"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
@@ -21,6 +21,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path("", include("app.accounts.urls")),
+    path("", include("app.contents.urls")),
     path("docs/", schema_view.with_ui("swagger"), name="schema-swagger-ui"),
 ]
 
