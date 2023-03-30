@@ -16,3 +16,9 @@ TYPE_DOC = Choices(
     ("cnpj", "CNPJ"),
     ("foreing", "Estrangeiro"),
 )
+
+STATUS_COMMENT = Choices(
+    ("published", "Aprovado"),
+    ("review", "Em Revisão"),
+    ("blocked", "Bloqueado"),
+)

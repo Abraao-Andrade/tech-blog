@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "app.accounts.apps.AccountsConfig",
     "app.contents.apps.ContentsConfig",
+    "app.comments.apps.CommentsConfig",
 ]
 
 MIDDLEWARE = [
