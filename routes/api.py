@@ -22,6 +22,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("", include("app.accounts.urls")),
     path("", include("app.contents.urls")),
+    path("", include("app.comments.urls")),
     path("docs/", schema_view.with_ui("swagger"), name="schema-swagger-ui"),
 ]
 

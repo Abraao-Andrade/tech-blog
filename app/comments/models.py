@@ -3,6 +3,8 @@ from django.utils.translation import gettext_lazy as _
 from app.common.models import TimeStampModel, SoftDeletionModel
 from app.common import choices
 
+from .managers import CommentManager
+
 
 class Comment(TimeStampModel, SoftDeletionModel):
     name = models.CharField(
@@ -37,9 +39,17 @@ class Comment(TimeStampModel, SoftDeletionModel):
     like = models.PositiveIntegerField(default=0, editable=False)
     spam = models.PositiveIntegerField(default=0, editable=False)
 
+    objects = CommentManager()
+
     class Meta:
         verbose_name = _("Comentário")
         verbose_name_plural = _("Comentários")
 
     def __str__(self) -> str:
         return self.text
+
+    @property
+    def child(self):
+        return Comment.objects.filter(parent=self, status="published").order_by(
+            "created_at"
+        )[:20]
