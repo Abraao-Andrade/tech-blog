@@ -88,9 +88,9 @@ class CategoryContentListAPIView(generics.ListAPIView):
     def get_queryset(self):
         category_slug = self.kwargs.get("slug")
 
-        if category := Category.objects.filter(slug=category_slug).first():
-            return Article.objects.filter(categories__in=[category.pk])
-        return Category.objects.filter(slug=category_slug)
+        if category := Category.objects.actives().filter(slug=category_slug).first():
+            return Article.objects.actives().filter(categories__in=[category.pk])
+        return Category.objects.actives().filter(slug=category_slug)
 
 
 class VideoListAPIView(generics.ListAPIView):
