@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     "app.accounts.apps.AccountsConfig",
     "app.contents.apps.ContentsConfig",
     "app.comments.apps.CommentsConfig",
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
 ]
 
 MIDDLEWARE = [
@@ -71,6 +73,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+SITE_ID = 1
 
 # ROUTES
 ROOT_URLCONF = "routes.api"
