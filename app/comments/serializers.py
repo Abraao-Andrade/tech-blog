@@ -88,8 +88,9 @@ class CreateInteractionCommentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def update(self, instance, validated_data):
-        return handle_update_comment_interaction.delay(
+        handle_update_comment_interaction.delay(
             comment_id=instance.id,
             like=validated_data.get("like", None),
             spam=validated_data.get("spam", None),
         )
+        return "success"

@@ -1,7 +1,5 @@
 from rest_framework.viewsets import generics
 from rest_framework.permissions import AllowAny
-from rest_framework.response import Response
-
 
 from .serializers import (
     CommentSerializer,
@@ -34,6 +32,3 @@ class CommentInteractionAPIView(generics.UpdateAPIView):
     serializer_class = CreateInteractionCommentSerializer
     queryset = Comment.objects.actives()
     permission_classes = (AllowAny,)
-
-    def put(self, request, *args, **kwargs):
-        return Response({"message": {"success"}}, status=200)
