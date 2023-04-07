@@ -9,3 +9,5 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [str(BASE_DIR / "static")]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "static")
+
+ALLOWED_HOST = ["*"]
