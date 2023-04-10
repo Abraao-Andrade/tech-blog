@@ -10,7 +10,7 @@
 - Install libs: `poetry install`
 - Run `pre-commit install` to make sure you are following the code style guide;
 - Install PostgreeSQL and create database
-- Duplicate `.env_example` file and rename to `.env`
+- Duplicate `.env.example` file and rename to `.env`
 - Populate envs vars in `.env` file
 - Run the migrations: `python manage.py migrate`;
 - Create a superuser: `python manage.py createsuperuser`;
