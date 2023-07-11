@@ -1,4 +1,4 @@
-# THIAGO-DOMINGOS PROJECT
+# TECH-BLOG PROJECT
 
 # Instalation
 
